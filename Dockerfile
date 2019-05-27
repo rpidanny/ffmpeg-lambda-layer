@@ -57,7 +57,7 @@ RUN cd ~/ffmpeg_sources && \
   hg clone https://bitbucket.org/multicoreware/x265 && \
   cd ~/ffmpeg_sources/x265/build/linux && \
   PATH="$HOME/bin:$PATH" cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="$HOME/ffmpeg_build" -DENABLE_SHARED:bool=off ../../source && \
-  make && \
+  PATH="$HOME/bin:$PATH" make && \
   make install
 
 # Install libfdk_aac
@@ -123,9 +123,8 @@ RUN cd ~/ffmpeg_sources && \
     --enable-libx264 \
     --enable-libx265 \
     --enable-nonfree && \
-  make && \
-  make install && \
-  hash -d ffmpeg
+  PATH="$HOME/bin:$PATH" make && \
+  PATH="$HOME/bin:$PATH" make install
 
 RUN cd $HOME/bin && \
   find . ! -perm -o=r -exec chmod +400 {} \; && \
