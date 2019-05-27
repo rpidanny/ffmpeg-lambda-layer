@@ -1,6 +1,7 @@
 FROM lambci/lambda-base:build
 
-RUN yum update -y
+# Using instructions from:
+# https://trac.ffmpeg.org/wiki/CompilationGuide/Centos
 
 RUN yum install -y install autoconf \
   automake \
