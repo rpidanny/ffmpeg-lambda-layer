@@ -126,6 +126,17 @@ RUN cd ~/ffmpeg_sources && \
   PATH="$HOME/bin:$PATH" make && \
   PATH="$HOME/bin:$PATH" make install
 
-RUN cd $HOME/bin && \
+RUN mkdir -p $HOME/lib && \
+  cp /usr/lib64/libxcb*.so.* $HOME/lib && \
+  cp /usr/lib64/libfreetype*.so.* $HOME/lib && \
+  cp /usr/lib64/libbz2*.so $HOME/lib && \
+  cp /usr/lib64/libbz2.so $HOME/lib/libbz2.so.1 && \
+  cp /usr/lib64/liblzma.so* $HOME/lib && \
+  cp /usr/lib64/libXau.so* $HOME/lib
+
+RUN rm -rf $HOME/ffmpeg_sources && \
+  rm -rf $HOME/ffmpeg_build
+
+RUN cd $HOME && \
   find . ! -perm -o=r -exec chmod +400 {} \; && \
-  zip -yr /tmp/ffmpeg-${FFMPEG_VERSION}.zip ./*
+  zip -yr /tmp/ffmpeg-${FFMPEG_VERSION}.zip ./
