@@ -16,7 +16,7 @@ AWS Lambda layer with ffmpeg binaries.
 Click on Layers and choose `Add a layer`, and `Provide a layer version ARN` and enter the following ARN (replace eu-west-1 with the region of your Lambda):
 
 ```
-arn:aws:lambda:eu-west-1:175033217214:layer:ffmpeg:1
+arn:aws:lambda:eu-west-1:175033217214:layer:ffmpeg:21
 ```
 
 ![Provide layer ARN](img/usage.png "Provide layer ARN screenshot")
